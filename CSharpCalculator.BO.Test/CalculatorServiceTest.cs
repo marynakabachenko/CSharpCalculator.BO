@@ -24,8 +24,8 @@ namespace CSharpCalculator.BO.Test
             var actualResult = CalculatorService.ParseInput(prevoiusInput, currentInput);
                                 
             //Assert
-            Assert.AreEqual(expectedResult, actualResult);
-           // Assert.That(actualResult = expectedResult, Throws.Exception );
+            //Assert.AreEqual(expectedResult, actualResult);
+           Assert.That(actualResult, Is.EqualTo(expectedResult));
         }
 
     }
