@@ -10,12 +10,7 @@ namespace CSharpCalculator.BO
     {
         public static string ParseInput(string prevoiusInput, string currentInput)
         {
-            //prevoiusInput = "5";
-            //currentInput = "7";
-
-            var finalOutput = String.Concat(prevoiusInput, currentInput);
-            
-            return finalOutput;
+            return String.Concat(prevoiusInput, currentInput).TrimStart('0');
         }
     }
 }
