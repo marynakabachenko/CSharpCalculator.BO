@@ -14,6 +14,11 @@ namespace CSharpCalculator.BO.Test
         [TestCase("1", "3", "13")]
         [TestCase("1", "24", "124")]
         [TestCase("0", "2", "2")]
+        [TestCase("3", "r   776", "3")]
+        [TestCase("9", "2*", "9")]
+        [TestCase("6", "sdfghjkl", "6")]
+        [TestCase("rtrtrt", "2", "0")]
+        [TestCase("  ", "2", "0")]
         public void ParseInputTest(string prevoiusInput, string currentInput, string expectedResult)
         {
             //Arrange
