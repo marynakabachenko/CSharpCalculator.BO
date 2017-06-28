@@ -23,8 +23,9 @@ namespace CalculatorUI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
+           // tbResult.Text = "0";
             tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "1");
         }
 
