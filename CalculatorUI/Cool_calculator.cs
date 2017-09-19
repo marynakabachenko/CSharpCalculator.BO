@@ -98,5 +98,10 @@ namespace CalculatorUI
         {
             tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "/");
         }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "=");
+        }
     }
 }
