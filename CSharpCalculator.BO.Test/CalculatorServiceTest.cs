@@ -21,14 +21,18 @@ namespace CSharpCalculator.BO.Test
 
         [TestCase("2*100", "2", "2*1002")]
         [TestCase("5/51", "0", "5/510")]
-        [TestCase("7+", "0", "7+")]
+        [TestCase("7*0", "0", "7*0")]
+        [TestCase("7*0", "7", "7*7")]
+        [TestCase("156-0", "5", "156-5")]
 
         [TestCase("156+", "-", "156-")]
-        [TestCase("156-", "0", "156-")]
+        
         [TestCase("156-", "3", "156-3")]
         [TestCase("156-3", "=", "153")]
         [TestCase("153-3", "=", "150")]
-
+        [TestCase("2003-3", "-", "2000-")]
+        [TestCase("150*2", "+", "300+")]
+        
 
 
         [TestCase("-1", "-", "-1-")]

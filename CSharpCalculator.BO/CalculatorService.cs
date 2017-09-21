@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+//using System.Linq.Expressions;
+using NCalc;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,33 +17,70 @@ namespace CSharpCalculator.BO
             // string totalValue = String.Concat(previousInput.TrimStart('0'), currentInputValidated);
             if (previousInput == "0")
             {
-                return String.Concat(previousInput.TrimStart('0'), currentInputValidated);
-            }
-
-            else
-            {
-                if ((previousInput.Last<char>()  == '+' ||
-                    previousInput.Last<char>() == '-' ||
-                    previousInput.Last<char>() == '/' ||
-                    previousInput.Last<char>() == '*') &
-                    (currentInputValidated == "+" ||
-                    currentInputValidated == "-" ||
-                    currentInputValidated == "/" ||
-                    currentInputValidated == "*" ))
+                if (currentInputValidated == "+" || currentInputValidated == "/" || currentInputValidated == "*" || currentInputValidated == "-" || currentInputValidated == "=")
                 {
-                    return String.Concat(previousInput.TrimStart('0').TrimEnd(previousInput[previousInput.Length - 1]), currentInputValidated);
+                    return String.Concat(previousInput, currentInputValidated);
                 }
                 else
                 {
                     return String.Concat(previousInput.TrimStart('0'), currentInputValidated);
                 }
             }
-            
+            else
+            {
+                if (Int32.TryParse(currentInputValidated, out int intcurrentInput))
+                {
+                    Int32.TryParse((String.Concat(previousInput, currentInputValidated)), out int intFirstElement);
+                    return String.Concat(previousInput, currentInputValidated);
+                }
+                else
+                {
+                    Expression previousInputAll = new Expression(previousInput);
+                    bool previousParsed = Int32.TryParse(previousInput, out int previousIntInput);
+                    if (!previousInputAll.HasErrors() & previousParsed == false)
+                    {
+                        if (currentInput == "=")
+                        {
+                            return new Expression(previousInput).Evaluate().ToString();
+                        }
+                        else
+                        {
+                            string previousEvaluated =    new Expression(previousInput).Evaluate().ToString();
+                            return String.Concat(previousEvaluated, currentInputValidated);
+                        }
+                    
+                    }
+                    else
+                    {
+
+
+                        if (previousInput.Last<char>() == '+' ||
+                                previousInput.Last<char>() == '-' ||
+                                previousInput.Last<char>() == '/' ||
+                                previousInput.Last<char>() == '*' ||
+                                previousInput.Last<char>() == '=')
+                        {
+                            return String.Concat(previousInput.TrimStart('0').TrimEnd(previousInput[previousInput.Length - 1]), currentInputValidated);
+                            
+                        }
+                        else
+                        {
+                            //evaluate 
+                            Int32.TryParse((String.Concat(previousInput.TrimStart('0'), currentInputValidated)), out int intFirstElement);
+                            return String.Concat(previousInput.TrimStart('0'), currentInputValidated);
+                           
+                        }
+                    } 
+                    
+                }
+
+            }
+                       
         }
 
         public static string ValidateInput(string currentInput)
         {
-            if (Int32.TryParse(currentInput, out int intcurrentInput1))
+            if (Int32.TryParse(currentInput, out int intcurrentInput))
             {
                 return (currentInput);
             }
