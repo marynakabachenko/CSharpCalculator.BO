@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-//using System.Linq.Expressions;
 using NCalc;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpCalculator.BO
 {
@@ -14,7 +10,6 @@ namespace CSharpCalculator.BO
         {
             string currentInputValidated = ValidateInput(currentInput);
 
-            // string totalValue = String.Concat(previousInput.TrimStart('0'), currentInputValidated);
             if (previousInput == "0")
             {
                 if (currentInputValidated == "+" || currentInputValidated == "/" || currentInputValidated == "*" || currentInputValidated == "-" || currentInputValidated == "=")
@@ -90,7 +85,7 @@ namespace CSharpCalculator.BO
                 {
                     return (currentInput);
                 }
-                else
+                else //is it used??
                 {
                     return ("0");
                 }
