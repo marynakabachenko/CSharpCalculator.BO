@@ -27,12 +27,8 @@ namespace CSharpCalculator.BO.Test
         [TestCase("2003-3", "-", "2000-")]
         [TestCase("150*2", "+", "300+")]
         
-
-
         [TestCase("-1", "-", "-1-")]
-        [TestCase("-1", "-5", "-1-5")]
-
-
+        [TestCase("-1-", "5", "-1-5")]
 
         public void ParseInputTest(string prevoiusInput, string currentInput, string expectedResult)
         {
